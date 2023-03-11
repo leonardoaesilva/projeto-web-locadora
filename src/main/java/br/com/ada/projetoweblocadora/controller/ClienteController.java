@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -74,8 +75,22 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+    @GetMapping("/c")
+    public String criar(Model model) {
+        model.addAttribute("cliente", new Cliente());
+        return "add";
+    }
+
+    @PostMapping("/c")
+    public String cadastrar(@ModelAttribute("cliente") Cliente cliente) {
+        this.clienteService.createCliente(cliente);
+        return "redirect:/r";
+    }
+
     @GetMapping("/r")
-    public String listar() {
+    public String listar(Model model) {
+        List<Cliente> clientela = this.clienteService.readClientela();
+        model.addAttribute("clientela", clientela);
         return "list";
     }
 }
