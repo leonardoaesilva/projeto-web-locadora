@@ -14,12 +14,18 @@
                     <div>
                         <input type="text" th:readonly="${criacao} ? 'false' : 'true'" th:field="*{documento}" id="inputDocumento"
                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                        <ul>
+                            <li th:each="erro : ${#fields.errors('documento')}" th:text="${erro}"></li>
+                        </ul>
                     </div>
                 </div>
                 <div>
                     <label for="inputNome">Nome</label>
                     <div>
                         <input type="text" th:field="*{nome}" id="inputNome">
+                        <ul>
+                            <li th:each="erro : ${#fields.errors('nome')}" th:text="${erro}"></li>
+                        </ul>
                     </div>
                 </div>
                 <input type="submit" value="Salvar"/>
