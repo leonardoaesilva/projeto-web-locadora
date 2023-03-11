@@ -12,7 +12,8 @@
                 <div>
                     <label for="inputDocumento">Documento de identificação</label>
                     <div>
-                        <input type="text" th:readonly="${criacao} ? 'false' : 'true'" th:field="*{documento}" id="inputDocumento">
+                        <input type="text" th:readonly="${criacao} ? 'false' : 'true'" th:field="*{documento}" id="inputDocumento"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                     </div>
                 </div>
                 <div>
