@@ -6,13 +6,13 @@
     </head>
     <body>
         <a th:href="@{/}">Voltar</a>
-        <form th:action="${add} ? @{/c/} : @{/u/{clienteID}/(clienteID=${cliente.documento})}" th:object="${cliente}" th:method="${add} ? POST : PUT">
+        <form th:action="${criacao} ? @{/c/} : @{/u/{clienteID}/(clienteID=${cliente.documento})}" th:object="${cliente}" th:method="${criacao} ? POST : PUT">
             <div>
-                <h3 th:text="${add} ? 'Cadastrar Cliente' : 'Editar Cliente'"></h3>
+                <h3 th:text="${criacao} ? 'Cadastrar Cliente' : 'Editar Cliente'"></h3>
                 <div>
                     <label for="inputDocumento">Documento de identificação</label>
                     <div>
-                        <input type="text" th:readonly="${add} ? 'false' : 'true'" th:field="*{documento}" id="inputDocumento">
+                        <input type="text" th:readonly="${criacao} ? 'false' : 'true'" th:field="*{documento}" id="inputDocumento">
                     </div>
                 </div>
                 <div>

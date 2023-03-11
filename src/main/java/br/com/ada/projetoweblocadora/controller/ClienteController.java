@@ -17,7 +17,7 @@ public class ClienteController {
 
     @GetMapping("/c/")
     public String criar(Model model) {
-        model.addAttribute("c", Boolean.TRUE);
+        model.addAttribute("criacao", Boolean.TRUE);
         model.addAttribute("cliente", new Cliente());
         return "add";
     }
@@ -42,7 +42,7 @@ public class ClienteController {
         if (optCliente.isPresent()) {
             model.addAttribute("cliente", optCliente.get());
         }
-        model.addAttribute("add", Boolean.FALSE);
+        model.addAttribute("criacao", Boolean.FALSE);
 
         return "add";
     }
